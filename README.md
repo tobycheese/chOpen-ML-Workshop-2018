@@ -12,7 +12,7 @@ Here you will find the environment to follow the workshop and to run the exercis
     * [Download for Mac](https://store.docker.com/editions/community/docker-ce-desktop-mac)
     * For Linux: Install Docker CE "Server" from [here](https://docs.docker.com/install/) or install from your usual package manager
 1. Start Docker Service
-1. Create a directory to hold workshop files
+1. Clone this repository
 
 ## Run environment
 ### Linux
