@@ -58,19 +58,8 @@ RUN python3 setup.py install
 WORKDIR ..
 RUN rm -r dlib
 
-# xgboost
-WORKDIR /usr/local
-RUN git clone --recursive https://github.com/dmlc/xgboost
-RUN pushd . && cd xgboost && make -j4 && chown -R $user python-package && popd
-RUN cd /usr/local/xgboost/python-package && python3 setup.py install && rm -r build dist xgboost.egg-info
-
 # more python libs
-RUN pip3 install flickrapi google-cloud-vision face_recognition monkeylearn spacy gensim textblob
-
-# nlp models
-RUN python3 -m spacy download en
-USER $user
-RUN python3 -m textblob.download_corpora
+RUN pip3 install flickrapi google-cloud-vision face_recognition monkeylearn
 
 ####################################################################################################
 
@@ -101,5 +90,4 @@ RUN rm -r /root/.cache/
 WORKDIR /home/$user/toyprojects/
 EXPOSE 8888
 USER $user
-# looks like tini really isn't needed anymore when running container with --init
 CMD /usr/local/bin/jupyter-notebook -y $user
