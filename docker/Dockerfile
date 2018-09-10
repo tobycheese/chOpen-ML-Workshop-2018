@@ -64,6 +64,7 @@ RUN pip3 install flickrapi google-cloud-vision face_recognition monkeylearn
 ####################################################################################################
 
 # configure notebook
+USER $user
 RUN mkdir /home/$user/.jupyter/ && jupyter notebook --generate-config && \
     jupyter contrib nbextension install --user && \
     jupyter nbextension install rise --py --user && \
